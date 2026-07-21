@@ -5,7 +5,6 @@ sys.path.append(os.path.join(os.path.dirname(__file__), "src"))
 import streamlit as st
 import numpy as np
 from PIL import Image, ImageDraw
-import os
 import io
 import time
 from cnnClassifier.pipeline.prediction import PredictionPipeline
@@ -18,39 +17,77 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom Styling
+# Custom High-Contrast Styling for Maximum Legibility
 st.markdown("""
 <style>
-    .main {
-        background-color: #0f172a;
-        color: #f8fafc;
-    }
+    /* Base background & text overrides */
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        background: linear-gradient(135deg, #0b0f19 0%, #1e1b4b 100%) !important;
+        color: #ffffff !important;
     }
-    .stCard {
-        background-color: rgba(30, 41, 59, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 1.5rem;
-        border-radius: 16px;
-        backdrop-filter: blur(10px);
+    
+    /* Force high visibility on all text elements */
+    html, body, p, span, label, div, .stMarkdown, .stText {
+        color: #f1f5f9 !important;
     }
-    .metric-card {
-        background: rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.3);
-        border-radius: 12px;
-        padding: 1rem;
-        text-align: center;
+    
+    /* Make captions, subtitles, and secondary text bright and clear */
+    .stCaption, [data-testid="stCaptionContainer"], small, .text-secondary {
+        color: #cbd5e1 !important;
+        font-weight: 600 !important;
+        font-size: 1rem !important;
     }
+
+    /* Headings high contrast */
+    h1, h2, h3, h4, h5, h6 {
+        color: #ffffff !important;
+        font-weight: 800 !important;
+    }
+
+    /* Input & Control Labels */
+    .stSelectbox label, .stFileUploader label, .stRadio label {
+        color: #ffffff !important;
+        font-size: 1.1rem !important;
+        font-weight: 700 !important;
+    }
+
+    /* Metric cards styling */
+    [data-testid="stMetricValue"] {
+        color: #38bdf8 !important;
+        font-weight: 800 !important;
+        font-size: 1.8rem !important;
+    }
+    [data-testid="stMetricLabel"] {
+        color: #e2e8f0 !important;
+        font-weight: 700 !important;
+        font-size: 1.05rem !important;
+    }
+
+    /* Sidebar text high contrast */
+    [data-testid="stSidebar"] {
+        background-color: #0f172a !important;
+    }
+    [data-testid="stSidebar"] * {
+        color: #f8fafc !important;
+    }
+
+    /* Status classes */
     .status-tumor {
-        color: #ef4444;
+        color: #f87171 !important;
         font-weight: 800;
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     .status-normal {
-        color: #22c55e;
+        color: #4ade80 !important;
         font-weight: 800;
-        font-size: 1.8rem;
+        font-size: 2rem;
+    }
+
+    /* Code block text legibility */
+    code, pre {
+        color: #38bdf8 !important;
+        background-color: #1e293b !important;
+        font-weight: 600 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -83,7 +120,6 @@ if nav_choice == "🔬 Diagnostic Scanner":
             img = Image.open(uploaded_file)
             st.image(img, caption="Uploaded Image", use_column_width=True)
         elif sample_choice != "None":
-            # Generate synthetic CT scan representation for testing preview
             img = Image.new('RGB', (224, 224), color=(30, 30, 40))
             draw = ImageDraw.Draw(img)
             draw.ellipse((40, 40, 184, 184), fill=(100, 100, 120), outline=(150, 150, 170))
@@ -100,11 +136,9 @@ if nav_choice == "🔬 Diagnostic Scanner":
             analyze_btn = st.button("🚀 Run Deep Learning Inference", type="primary", use_container_width=True)
             if analyze_btn:
                 with st.spinner("Processing CT Scan through VGG16 Deep Learning Pipeline..."):
-                    # Save image temporarily to inputImage.jpg
                     temp_path = "inputImage.jpg"
                     img.convert("RGB").save(temp_path)
                     
-                    # Run prediction pipeline
                     pipeline = PredictionPipeline(temp_path)
                     results = pipeline.predict()
                     
