@@ -1,15 +1,10 @@
-tensorflow-cpu
-streamlit
-flask
-flask-cors
+streamlit>=1.25.0
 pandas
 numpy
 matplotlib
 seaborn
 python-box>=6.0.2
-pyYAML
-tqdm
-ensure>=1.0.2
+pyyaml
 joblib
 scipy
 Pillow
