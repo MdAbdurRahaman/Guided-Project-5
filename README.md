@@ -4,10 +4,13 @@
 [![TensorFlow](https://img.shields.io/badge/Framework-TensorFlow%20%2F%20Keras-orange.svg)](https://tensorflow.org/)
 [![MLflow](https://img.shields.io/badge/MLOps-MLflow-blue)](https://mlflow.org/)
 [![DVC](https://img.shields.io/badge/Data%20Version%20Control-DVC-purple)](https://dvc.org/)
-[![Streamlit](https://img.shields.io/badge/Deployment-Streamlit%20Cloud-red)](https://streamlit.io/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://guided-project-5-z53n9utzzbcx2zdppboanp.streamlit.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 An end-to-end medical deep learning project that classifies Kidney CT Scans into **Normal** vs **Tumor** using **VGG16 Transfer Learning**, orchestrated with production-grade **MLOps practices** (Data Version Control with DVC, experiment tracking with MLflow, Docker containerization, AWS CI/CD deployment, and interactive web UIs via Streamlit and Flask).
+
+🌐 **Live Streamlit App**: [https://guided-project-5-z53n9utzzbcx2zdppboanp.streamlit.app/](https://guided-project-5-z53n9utzzbcx2zdppboanp.streamlit.app/)
+
 
 ---
 
@@ -175,6 +178,6 @@ Deploying this project to **Streamlit Community Cloud** takes under 2 minutes:
 ## 🧑‍💻 Developer Profile & Acknowledgments
 
 - **Author**: Md Abdur Rahaman
-- **Email**: m.abdurrahaman.dev@gmail.com
+- **Email**: md.abdur.rahaman@g.bracu.ac.bd
 - **GitHub Repository**: [Guided-Project-5](https://github.com/MdAbdurRahaman/Guided-Project-5.git)
 - **Guided Tutorial Reference**: [End to End Deep Learning Project With MLFLOW, DVC And Deployment](https://www.youtube.com/watch?v=86BKEv0X2xU) by Krish Naik.

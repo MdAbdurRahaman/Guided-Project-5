@@ -228,5 +228,6 @@ elif nav_choice == "👤 Developer Profile":
     st.markdown("""
     **Developer**: Md Abdur Rahaman  
     **Project**: Guided Project 5 - Deep Learning Kidney Disease Classification  
+    **Live App URL**: [https://guided-project-5-z53n9utzzbcx2zdppboanp.streamlit.app/](https://guided-project-5-z53n9utzzbcx2zdppboanp.streamlit.app/)  
     **GitHub Repository**: [https://github.com/MdAbdurRahaman/Guided-Project-5.git](https://github.com/MdAbdurRahaman/Guided-Project-5.git)  
     """)
